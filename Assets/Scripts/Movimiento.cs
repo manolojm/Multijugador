@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -10,14 +11,29 @@ public class Movimiento : MonoBehaviour
     private Rigidbody2D rb2D;
 
     private void Start() {
-        rb2D = GetComponent<Rigidbody2D>();
+        if (GetComponent<PhotonView>().IsMine) {
+            rb2D = GetComponent<Rigidbody2D>();
+        }
     }
 
     private void Update() {
-        direccion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        if (GetComponent<PhotonView>().IsMine) {
+            direccion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+
+            // FlipxX
+            if (rb2D.velocity.x > 0.1f) {
+                GetComponent<SpriteRenderer>().flipX = false;
+            } else {
+                if (rb2D.velocity.x < -0.1f) {
+                    GetComponent<SpriteRenderer>().flipX = true;
+                }
+            }
+        }
     }
 
     private void FixedUpdate() {
-        rb2D.MovePosition(rb2D.position + direccion * velocidad * Time.fixedDeltaTime);
+        if (GetComponent<PhotonView>().IsMine) {
+            rb2D.MovePosition(rb2D.position + direccion * velocidad * Time.fixedDeltaTime);
+        }
     }
 }
