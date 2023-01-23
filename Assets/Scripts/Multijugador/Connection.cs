@@ -12,11 +12,12 @@ public class Connection : MonoBehaviourPunCallbacks {
     #region Variables Públicas
 
     [Header("Paneles")]
-    public GameObject panelPrincipal; // Pantalla de inicio
+    public GameObject panelInicio;    // Pantalla de inicio
+    public GameObject panelPrincipal; // Pantalla de inicio multijugador
     public GameObject panelCrearSala; // Panel cuando un jugador quiere crear una sala nueva
     public GameObject panelUnirSala;  // Panel para unirse a una partica creada
     public GameObject panelDeSala;    // Panel que muestra el contenido    
-    public GameObject panelAvatar;
+    //public GameObject panelAvatar;
 
     [Header("Botones")]
     public Button btnCrearSala;
@@ -59,7 +60,7 @@ public class Connection : MonoBehaviourPunCallbacks {
 
     private void Start() {
         // Mostramos el panel de inicio.
-        CambiarPanel(panelPrincipal);
+        CambiarPanel(panelInicio);
 
         // Declaramos listas para jugadores y salas.
         propiedadesJugador = new ExitGames.Client.Photon.Hashtable();
@@ -164,14 +165,16 @@ public class Connection : MonoBehaviourPunCallbacks {
 
     public void CambiarPanel(GameObject nombre) {
         // Desactivamos todos los paneles
+        panelInicio.SetActive(false);
         panelCrearSala.SetActive(false);
         panelPrincipal.SetActive(false);
         panelUnirSala.SetActive(false);
         panelDeSala.SetActive(false);
-        panelAvatar.SetActive(false);
+        //panelAvatar.SetActive(false);
 
         // Activamos el panel correcto.
         nombre.SetActive(true);
+        Debug.Log("Cambiado el panel");
     }
 
     public void ActualizarPanelDeJugadores() {
