@@ -287,7 +287,11 @@ public class Connection : MonoBehaviourPunCallbacks {
     #region Botones Panel de Sala
     public void AlPulsarIniciarPartida() {
         PhotonNetwork.LoadLevel(1);
-        Destroy(this);
+        //Destroy(this);
+    }
+
+    public void AlPulsarIniciarTest() {
+        SceneManager.LoadScene("TestScene");
     }
 
     public void AlPulsarBtnUnirseASalaDeLista(string nombreSala) {
