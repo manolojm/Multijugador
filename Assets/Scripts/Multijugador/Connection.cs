@@ -81,7 +81,6 @@ public class Connection : MonoBehaviourPunCallbacks {
         Estado("Conectado al servidor");
     }
 
-
     override
     public void OnJoinedRoom() {
         Estado("Conectado a la sala " + PhotonNetwork.CurrentRoom.Name);
@@ -196,7 +195,7 @@ public class Connection : MonoBehaviourPunCallbacks {
             // Localizamos y actualizamos etiquetas
             nuevoElemento.transform.Find("txtNickName").GetComponent<TextMeshProUGUI>().text = jugador.NickName;
             // Obtenemos el avatar
-            string avatar;
+            /*string avatar;
             object avatarJugador = jugador.CustomProperties["avatar"];
 
             if ((int)avatarJugador < 0) {
@@ -205,11 +204,11 @@ public class Connection : MonoBehaviourPunCallbacks {
                 avatar = listaAvatar[(int)avatarJugador];
             }
 
-            nuevoElemento.transform.Find("txtAvatar").GetComponent<TextMeshProUGUI>().text = avatar;
+            nuevoElemento.transform.Find("txtAvatar").GetComponent<TextMeshProUGUI>().text = avatar;*/
 
         }
 
-        if (avatarSeleccionado > -1 && PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers
+        if (avatarSeleccionado > -2 && PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers
             && PhotonNetwork.IsMasterClient) {
             btnIniciarPartida.interactable = true;
         } else {
@@ -231,7 +230,7 @@ public class Connection : MonoBehaviourPunCallbacks {
 
             // Localizamos las etiquetas y las actualizamos
             nuevoElemento.transform.Find("txtNombreSala").GetComponent<TextMeshProUGUI>().text = r.Name;
-            nuevoElemento.transform.Find("txtCpacidadSala").GetComponent<TextMeshProUGUI>().text =
+            nuevoElemento.transform.Find("txtCapacidadSala").GetComponent<TextMeshProUGUI>().text =
                 r.PlayerCount + " / " + r.MaxPlayers;
 
             //Añadimos la acción de selección en la lista.
@@ -265,12 +264,16 @@ public class Connection : MonoBehaviourPunCallbacks {
 
         if (!String.IsNullOrEmpty(inputMaxPlayers.text)) {
             maxJugadores = byte.Parse(inputMaxPlayers.text);
+
             if (!String.IsNullOrEmpty(inputNombreSala.text) && (maxJugadores > 1) && (maxJugadores <= 20)) {
                 RoomOptions opcionesDeSala = new RoomOptions();
                 opcionesDeSala.MaxPlayers = maxJugadores;
                 opcionesDeSala.IsVisible = !chkPrivada.isOn; // Es visible si no es privada
 
+                Debug.Log("Es master? " + PhotonNetwork.IsMasterClient);
+
                 PhotonNetwork.CreateRoom(inputNombreSala.text, opcionesDeSala, TypedLobby.Default);
+                //PhotonNetwork.CreateRoom(inputNombreSala.text);
             } else {
                 Estado("Opciones de sala incorrectas");
             }
