@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class Movimiento : MonoBehaviour
 {
@@ -21,10 +23,10 @@ public class Movimiento : MonoBehaviour
     public Boolean esPilla;
     public Boolean esPricipal;
 
-    private int restantes = 4;
-    private Boolean ganado = false;
+    private ControlJuego control;
 
     private void Start() {
+        control = GameObject.Find("SceneManager").GetComponent<ControlJuego>();
         if (GetComponent<PhotonView>().IsMine) {
             rb2D = GetComponent<Rigidbody2D>();
             principal.SetActive(true);
@@ -56,23 +58,26 @@ public class Movimiento : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Player")) {
-            MeHaPillado();
-            restantes--;
 
-            if (restantes <= 0) {
-                Ganar();
+        // Solo cuenta si uno pilla y el otro no pilla
+        if (collision.gameObject.CompareTag("Player") && 
+            (esPilla != collision.gameObject.GetComponent<Movimiento>().esPilla)) {
+
+            // Solo envía la señal el que le han pillado para que no sea doble
+            if (!esPilla) {
+                MeHaPillado();
             }
         }
     }
 
     private void MeHaPillado() {
+        // Actualizamos el personaje
         noPilla.SetActive(false);
         pilla.SetActive(true);
         esPilla = true;
+
+        // Uno menos restante
+        control.DisminuirRestantes();
     }
 
-    private void Ganar() {
-        Debug.Log("Ha ganado la partida");
-    }
 }

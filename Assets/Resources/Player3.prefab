@@ -264,11 +264,11 @@ GameObject:
   - component: {fileID: 5110257357410952345}
   - component: {fileID: 2078792485485427388}
   - component: {fileID: 8598581758231745618}
-  - component: {fileID: 1249688668723267701}
   - component: {fileID: 5652545016567889446}
   - component: {fileID: 5935725290485830637}
   - component: {fileID: 3456914629084330397}
   - component: {fileID: 642715080105976254}
+  - component: {fileID: 1249688668723267701}
   m_Layer: 0
   m_Name: Player3
   m_TagString: Player
@@ -393,26 +393,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &1249688668723267701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8012081126924978978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6804d3888302398448d8b5f7e3d0b563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidad: 5
-  direccion: {x: 0, y: 0}
-  animacion: {fileID: 642715080105976254}
-  pilla: {fileID: 3310515408600376523}
-  noPilla: {fileID: 4173595247198856895}
-  principal: {fileID: 7963655603810024478}
-  esPilla: 0
-  esPricipal: 0
 --- !u!114 &5652545016567889446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,7 +459,7 @@ MonoBehaviour:
     LayerIndex: 0
 --- !u!95 &642715080105976254
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -496,4 +476,24 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1249688668723267701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012081126924978978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6804d3888302398448d8b5f7e3d0b563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidad: 5
+  direccion: {x: 0, y: 0}
+  animacion: {fileID: 642715080105976254}
+  pilla: {fileID: 3310515408600376523}
+  noPilla: {fileID: 4173595247198856895}
+  principal: {fileID: 7963655603810024478}
+  esPilla: 0
+  esPricipal: 0
