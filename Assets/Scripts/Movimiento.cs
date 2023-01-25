@@ -16,7 +16,7 @@ public class Movimiento : MonoBehaviour
     [Header("Extras")]
     public GameObject pilla;
     public GameObject noPilla;
-    //public GameObject principal;
+    public GameObject principal;
 
     public Boolean esPilla;
     public Boolean esPricipal;
@@ -27,6 +27,7 @@ public class Movimiento : MonoBehaviour
     private void Start() {
         if (GetComponent<PhotonView>().IsMine) {
             rb2D = GetComponent<Rigidbody2D>();
+            principal.SetActive(true);
         }
     }
 
@@ -44,15 +45,13 @@ public class Movimiento : MonoBehaviour
             }
         }
 
-        animacion.SetFloat("velocityX", Mathf.Abs(rb2D.velocity.x));
-        animacion.SetFloat("velocityY", rb2D.velocity.y);
+        //animacion.SetFloat("velocityX", Mathf.Abs(rb2D.velocity.x));
+        //animacion.SetFloat("velocityY", rb2D.velocity.y);
     }
 
     private void FixedUpdate() {
         if (GetComponent<PhotonView>().IsMine) {
-            if (esPricipal){
-                rb2D.MovePosition(rb2D.position + direccion * velocidad * Time.fixedDeltaTime);
-            }
+            rb2D.MovePosition(rb2D.position + direccion * velocidad * Time.fixedDeltaTime);
         }
     }
 

@@ -100,7 +100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2962160267546200163
 Transform:
   m_ObjectHideFlags: 0
@@ -348,7 +348,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &2962160268596554081
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -365,7 +365,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!50 &2962160268596554090
 Rigidbody2D:
   serializedVersion: 4
@@ -494,5 +494,6 @@ MonoBehaviour:
   animacion: {fileID: 2962160268596554081}
   pilla: {fileID: 2962160267665996091}
   noPilla: {fileID: 2962160267065452437}
+  principal: {fileID: 2962160267546200160}
   esPilla: 1
-  esPricipal: 1
+  esPricipal: 0
