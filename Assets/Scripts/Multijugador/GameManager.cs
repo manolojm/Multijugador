@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     void Start() {
 
         if (PhotonNetwork.IsMasterClient) {
-            random = Random.Range(1, 6);
-            PhotonNetwork.Instantiate("Player" + random + "", new Vector3(0, 2, 0), Quaternion.identity);
+            //random = Random.Range(1, 6);
+            PhotonNetwork.Instantiate("Player1", new Vector3(0, 2, 0), Quaternion.identity);
         } else {
             random = Random.Range(1, 6);
             PhotonNetwork.Instantiate("Player" + random + "", new Vector3(0, -2, 0), Quaternion.identity);

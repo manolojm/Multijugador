@@ -285,9 +285,18 @@ public class Connection : MonoBehaviourPunCallbacks {
     #endregion
 
     #region Botones Panel de Sala
+    public void Individual() {
+        RoomOptions options = new RoomOptions();
+        options.MaxPlayers = 4;
+
+        PhotonNetwork.JoinOrCreateRoom("room1", options, TypedLobby.Default);
+        PhotonNetwork.LoadLevel(2);
+        Destroy(this);
+    }
+
     public void AlPulsarIniciarPartida() {
         PhotonNetwork.LoadLevel(1);
-        //Destroy(this);
+        Destroy(this);
     }
 
     public void AlPulsarIniciarTest() {
