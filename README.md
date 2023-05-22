@@ -3,7 +3,6 @@
 - - -
 
 **Descripción**: Versión multijugador del clásico juego pilla-pilla  
-**Estado**: En desarrollo
 
 - - -
 
